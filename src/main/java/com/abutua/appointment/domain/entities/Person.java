@@ -20,7 +20,15 @@ public class Person implements Serializable{
     private Long id;
     private String name;
     private String phone;
-    
+
+    public Person() {
+    }
+
+    public Person(String name, String phone) {
+        this.name = name;
+        this.phone = phone;
+    }
+
     public Long getId() {
         return id;
     }

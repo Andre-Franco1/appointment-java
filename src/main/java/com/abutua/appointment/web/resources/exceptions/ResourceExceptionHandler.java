@@ -1,4 +1,4 @@
-package com.abutua.appointment.web.exceptions;
+package com.abutua.appointment.web.resources.exceptions;
 
 import java.time.Instant;
 

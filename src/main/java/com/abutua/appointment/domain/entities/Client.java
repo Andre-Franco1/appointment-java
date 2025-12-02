@@ -18,6 +18,13 @@ public class Client extends Person {
     @OneToMany(mappedBy = "client")
     private List<Appointment> appointments = new ArrayList<>();
 
+    public Client() {}
+
+    public Client(String name, String phone, LocalDate dateOfBirth) {
+        super(name, phone);
+        this.dateOfBirth = dateOfBirth;
+    }
+
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
