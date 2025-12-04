@@ -33,13 +33,20 @@ public class Professional extends Person {
     @JoinColumn(name = "PROFESSIONAL_ID")
     private List<WorkScheduleItem> workScheduleItems = new ArrayList<>();
 
+    public Professional(){
+    }
+
+    public Professional(Long id) {
+        super(id);
+    }
+
     public void addWorkScheduleItem(DayOfWeek dayOfWeek, LocalTime startTime, LocalTime endTime, int slots,
             int slotSize) {
         WorkScheduleItem wsi = new WorkScheduleItem(dayOfWeek, startTime, endTime, slots, slotSize);
         workScheduleItems.add(wsi);
     }
 
-    public boolean getActive() {
+    public boolean isActive() {
         return active;
     }
 

@@ -17,6 +17,13 @@ public class AppointmentType implements Serializable {
     private Integer id;
     private String type;
 
+    public AppointmentType() {
+    }
+
+    public AppointmentType(Integer id) {
+        this.id = id;
+    }
+
     public Integer getId() {
         return id;
     }
