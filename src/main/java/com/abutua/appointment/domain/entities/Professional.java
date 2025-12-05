@@ -29,8 +29,7 @@ public class Professional extends Person {
     @OneToMany(mappedBy = "professional")
     private List<Appointment> appointments = new ArrayList<>();
 
-    @OneToMany
-    @JoinColumn(name = "PROFESSIONAL_ID")
+    @OneToMany(mappedBy = "professional")
     private List<WorkScheduleItem> workScheduleItems = new ArrayList<>();
 
     public Professional(){
