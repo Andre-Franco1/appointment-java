@@ -124,13 +124,13 @@ public class CreateAppointmentUseCase {
 
     private void checkProfessionalHasAvailableScheduleOrThrowsException(Professional professional,
             Appointment appointment) {
-        var timeSlots = searchProfessionalAvailabilityTimesUseCase.executeUseCase(professional, appointment.getDate());
+        var timeSlots = searchProfessionalAvailabilityTimesUseCase.executeUseCase(professional.getId(), appointment.getDate());
 
         if (timeSlots.isEmpty()) {
             throw new BusinessException("O profissional não trabalha na data selecionada.");
         } else {
-            var timeSlot = timeSlots.stream().filter(ts -> ts.getStarTime().equals(appointment.getStartTime())
-                    && ts.getEndTime().equals(appointment.getEndTime())).findFirst();
+            var timeSlot = timeSlots.stream().filter(ts -> ts.getStartTime().toLocalTime().equals(appointment.getStartTime())
+                    && ts.getEndTime().toLocalTime().equals(appointment.getEndTime())).findFirst();
             if(timeSlot.isEmpty()){
                 throw new BusinessException("O profissional não trabalha no horário selecionado.");
             }
