@@ -2,6 +2,7 @@ package com.abutua.appointment.domain.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.abutua.appointment.domain.entities.Appointment;
 import com.abutua.appointment.domain.mappers.AppointmentMapper;
@@ -15,6 +16,7 @@ public class AppointmentService {
     @Autowired
     private CreateAppointmentUseCase createAppointmentUseCase;
 
+    @Transactional
     public AppointmentResponse createAppointment(AppointmentRequest appointmentRequest) {
 
         Appointment appointment = createAppointmentUseCase.execusteUseCase(AppointmentMapper.fromAppointmentRequestDTO(appointmentRequest));

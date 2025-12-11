@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.abutua.appointment.domain.entities.Professional;
 import com.abutua.appointment.domain.mappers.TimeSlotMapper;
@@ -29,6 +30,7 @@ public class ProfessionalService {
     @Autowired
     private ProfessionalRepository professionalRepository;
 
+    @Transactional(readOnly = true)
     public List<TimeSlotResponse> getAvailabilityTimesFromProfessional(long professionalId, LocalDate date){
 
         var professional = getProfessional(professionalId);
@@ -38,6 +40,7 @@ public class ProfessionalService {
         return timeSlots.stream().map(ts -> TimeSlotMapper.toTimeSlotResponseDTO(ts)).collect(Collectors.toList());
     }
 
+    @Transactional(readOnly = true)
     public List<Integer> getAvailabilityDaysFromProfessional(long professionalId, int month, int year) {
         
         checkProfessionalExistsOrThrowsException(professionalId);
