@@ -5,6 +5,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.abutua.appointment.domain.mappers.ClientMapper;
 import com.abutua.appointment.domain.repositories.ClientRepository;
@@ -20,23 +21,27 @@ public class ClientService {
     @Autowired
     private ClientRepository clientRepository;
 
+    @Transactional(readOnly = true)
     public Page<ClientResponse> findByNameContainingIgnoreCase(String name, int page, int size) {
         var pageRequest = PageRequest.of(page, size);
         var pageClient = clientRepository.findByNameContainingIgnoreCase(name, pageRequest);
         return pageClient.map(c -> ClientMapper.toClientResponseDTO(c));
     }
 
+    @Transactional(readOnly = true)
     public ClientResponse getById(long id){
         var client = clientRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Cliente não encontrado."));
 
         return ClientMapper.toClientResponseDTO(client);
     }
 
+    @Transactional
     public ClientResponse save(ClientRequest clientRequest) {
         var client = clientRepository.save(ClientMapper.fromClientRequestDTO(clientRequest));
         return ClientMapper.toClientResponseDTO(client);
     }
 
+    @Transactional
     public void update(long id, ClientRequest clientRequest) {
         try {
             var client = clientRepository.getReferenceById(id);
@@ -51,6 +56,7 @@ public class ClientService {
         }
     }
 
+    @Transactional
     public void deleteById(long id) {
         try {
             if (clientRepository.existsById(id))
