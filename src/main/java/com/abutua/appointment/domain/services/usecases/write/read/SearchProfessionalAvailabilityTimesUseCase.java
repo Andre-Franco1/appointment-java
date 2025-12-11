@@ -17,7 +17,7 @@ import com.abutua.appointment.domain.repositories.AppointmentRepository;
 import com.abutua.appointment.domain.repositories.WorkScheduleItemRepository;
 
 @Service
-public class SearchProfessionalAvailabilityTimes {
+public class SearchProfessionalAvailabilityTimesUseCase {
 
     @Autowired
     private WorkScheduleItemRepository workScheduleItemRepository;
