@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 
+import com.abutua.appointment.domain.conterters.DayOfWeekConverter;
+
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,6 +22,8 @@ public class WorkScheduleItem implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    @Convert(converter = DayOfWeekConverter.class)
     private DayOfWeek dayOfWeek;
     private LocalTime startTime;
     private LocalTime endTime;

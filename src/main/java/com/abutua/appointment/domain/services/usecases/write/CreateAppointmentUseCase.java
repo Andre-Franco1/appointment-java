@@ -17,7 +17,7 @@ import com.abutua.appointment.domain.repositories.AreaRepository;
 import com.abutua.appointment.domain.repositories.ClientRepository;
 import com.abutua.appointment.domain.repositories.ProfessionalRepository;
 import com.abutua.appointment.domain.services.exceptions.BusinessException;
-import com.abutua.appointment.domain.services.usecases.write.read.SearchProfessionalAvailabilityTimes;
+import com.abutua.appointment.domain.services.usecases.write.read.SearchProfessionalAvailabilityTimesUseCase;
 
 import jakarta.persistence.EntityNotFoundException;
 
@@ -40,7 +40,7 @@ public class CreateAppointmentUseCase {
     private AppointmentRepository appointmentRepository;
 
     @Autowired
-    private SearchProfessionalAvailabilityTimes searchProfessionalAvailabilityTimes;
+    private SearchProfessionalAvailabilityTimesUseCase searchProfessionalAvailabilityTimesUseCase;
 
     public Appointment execusteUseCase(Appointment appointment) {
 
@@ -124,7 +124,7 @@ public class CreateAppointmentUseCase {
 
     private void checkProfessionalHasAvailableScheduleOrThrowsException(Professional professional,
             Appointment appointment) {
-        var timeSlots = searchProfessionalAvailabilityTimes.executeUseCase(professional, appointment.getDate());
+        var timeSlots = searchProfessionalAvailabilityTimesUseCase.executeUseCase(professional, appointment.getDate());
 
         if (timeSlots.isEmpty()) {
             throw new BusinessException("O profissional não trabalha na data selecionada.");
