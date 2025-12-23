@@ -6,7 +6,7 @@ public class StandardError {
     private Instant timeStamp;
     private Integer status;
     private String error;
-    private String messsage;
+    private String message;
     private String path;
 
     public Instant getTimeStamp() {
@@ -33,12 +33,12 @@ public class StandardError {
         this.error = error;
     }
 
-    public String getMesssage() {
-        return messsage;
+    public String getMessage() {
+        return message;
     }
 
-    public void setMesssage(String messsage) {
-        this.messsage = messsage;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public String getPath() {

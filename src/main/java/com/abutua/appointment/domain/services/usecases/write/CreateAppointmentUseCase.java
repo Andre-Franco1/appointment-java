@@ -19,7 +19,7 @@ import com.abutua.appointment.domain.repositories.AreaRepository;
 import com.abutua.appointment.domain.repositories.ClientRepository;
 import com.abutua.appointment.domain.repositories.ProfessionalRepository;
 import com.abutua.appointment.domain.services.exceptions.BusinessException;
-import com.abutua.appointment.domain.services.usecases.write.read.SearchProfessionalAvailabilityTimesUseCase;
+import com.abutua.appointment.domain.services.usecases.read.SearchProfessionalAvailabilityTimesUseCase;
 
 import jakarta.persistence.EntityNotFoundException;
 

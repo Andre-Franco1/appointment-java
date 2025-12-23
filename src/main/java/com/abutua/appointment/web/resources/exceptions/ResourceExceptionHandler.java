@@ -28,7 +28,7 @@ public class ResourceExceptionHandler {
         HttpStatus status = HttpStatus.BAD_REQUEST;
 
         error.setError("Parameter exception");
-        error.setMesssage(exception.getMessage());
+        error.setMessage(exception.getMessage());
         error.setPath(request.getRequestURI());
         error.setStatus(status.value());
         error.setTimeStamp(Instant.now());
@@ -45,7 +45,7 @@ public class ResourceExceptionHandler {
         HttpStatus status = HttpStatus.BAD_REQUEST;
 
         error.setError("Validation Error");
-        error.setMesssage("Parâmetros requeridos.");
+        error.setMessage("Parâmetros requeridos.");
         error.setPath(request.getRequestURI());
         error.setStatus(status.value());
         error.setTimeStamp(Instant.now());
@@ -64,7 +64,7 @@ public class ResourceExceptionHandler {
         HttpStatus status = HttpStatus.BAD_REQUEST;
 
         error.setError("Parse date exception");
-        error.setMesssage("Formato de data inválido. Utilize: 'yyyy-MM-dd'");
+        error.setMessage("Formato de data inválido. Utilize: 'yyyy-MM-dd'");
         error.setPath(request.getRequestURI());
         error.setStatus(status.value());
         error.setTimeStamp(Instant.now());
@@ -81,7 +81,7 @@ public class ResourceExceptionHandler {
         HttpStatus status = HttpStatus.UNPROCESSABLE_ENTITY;
 
         error.setError("Validation Error");
-        error.setMesssage(exception.getMessage());
+        error.setMessage(exception.getMessage());
         error.setPath(request.getRequestURI());
         error.setStatus(status.value());
         error.setTimeStamp(Instant.now());
@@ -99,7 +99,7 @@ public class ResourceExceptionHandler {
         HttpStatus status = HttpStatus.BAD_REQUEST;
 
         error.setError("Database exception");
-        error.setMesssage(exception.getMessage());
+        error.setMessage(exception.getMessage());
         error.setPath(request.getRequestURI());
         error.setStatus(status.value());
         error.setTimeStamp(Instant.now());
@@ -115,7 +115,7 @@ public class ResourceExceptionHandler {
         HttpStatus status = HttpStatus.CONFLICT;
 
         error.setError("Business exception");
-        error.setMesssage(exception.getMessage());
+        error.setMessage(exception.getMessage());
         error.setPath(request.getRequestURI());
         error.setStatus(status.value());
         error.setTimeStamp(Instant.now());
@@ -132,7 +132,7 @@ public class ResourceExceptionHandler {
         HttpStatus status = HttpStatus.NOT_FOUND;
 
         error.setError("Resource not found");
-        error.setMesssage(exception.getMessage());
+        error.setMessage(exception.getMessage());
         error.setPath(request.getRequestURI());
         error.setStatus(status.value());
         error.setTimeStamp(Instant.now());

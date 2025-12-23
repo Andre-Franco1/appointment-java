@@ -12,8 +12,8 @@ import com.abutua.appointment.domain.entities.Professional;
 import com.abutua.appointment.domain.mappers.TimeSlotMapper;
 import com.abutua.appointment.domain.repositories.ProfessionalRepository;
 import com.abutua.appointment.domain.services.exceptions.ParameterException;
-import com.abutua.appointment.domain.services.usecases.write.read.SearchProfessionalAvailabilityDaysUseCase;
-import com.abutua.appointment.domain.services.usecases.write.read.SearchProfessionalAvailabilityTimesUseCase;
+import com.abutua.appointment.domain.services.usecases.read.SearchProfessionalAvailabilityDaysUseCase;
+import com.abutua.appointment.domain.services.usecases.read.SearchProfessionalAvailabilityTimesUseCase;
 import com.abutua.appointment.dto.TimeSlotResponse;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -49,6 +49,10 @@ public class ProfessionalService {
         checkMonthAndCurrentYearIsValidOrThrowsException(month, year);
 
         LocalDate start = LocalDate.of(year, month, 1);
+
+        if(start.isBefore(LocalDate.now())){
+            start = LocalDate.now();
+        }
         LocalDate end = start.withDayOfMonth(start.lengthOfMonth());
 
         return this.searchProfessionalAvailabilityDays.executeUseCase(professionalId, start, end);

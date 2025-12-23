@@ -1,4 +1,4 @@
-package com.abutua.appointment.domain.services.usecases.write.read;
+package com.abutua.appointment.domain.services.usecases.read;
 
 import java.time.LocalDate;
 import java.util.List;
