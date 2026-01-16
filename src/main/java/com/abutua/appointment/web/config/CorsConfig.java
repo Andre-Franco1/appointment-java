@@ -1,4 +1,4 @@
-package com.abutua.appointment.web.resources.config;
+package com.abutua.appointment.web.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
