@@ -12,7 +12,8 @@ public class ClientMapper {
                 client.getId(),
                 client.getName(),
                 client.getPhone(),
-                client.getDateOfBirth());
+                client.getDateOfBirth(),
+                client.getComments());
         return clientResponse;
     }
 
@@ -20,7 +21,8 @@ public class ClientMapper {
         return new Client(
             clientRequest.name(),
             clientRequest.phone(),
-            clientRequest.dateOfBirth());
+            clientRequest.dateOfBirth(),
+            clientRequest.comments());
     }
 
 }
