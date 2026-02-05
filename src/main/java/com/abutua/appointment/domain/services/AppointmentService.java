@@ -28,7 +28,7 @@ public class AppointmentService {
     @Transactional
     public AppointmentResponse createAppointment(AppointmentRequest appointmentRequest) {
 
-        Appointment appointment = createAppointmentUseCase.execusteUseCase(AppointmentMapper.fromAppointmentRequestDTO(appointmentRequest));
+        Appointment appointment = createAppointmentUseCase.executeUseCase(AppointmentMapper.fromAppointmentRequestDTO(appointmentRequest));
         return AppointmentMapper.toAppointmentResponseDTO(appointment);
     }
 

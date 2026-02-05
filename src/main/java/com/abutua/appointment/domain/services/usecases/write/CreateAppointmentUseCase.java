@@ -45,7 +45,7 @@ public class CreateAppointmentUseCase {
     private SearchProfessionalAvailabilityTimesUseCase searchProfessionalAvailabilityTimesUseCase;
 
     @Transactional
-    public Appointment execusteUseCase(Appointment appointment) {
+    public Appointment executeUseCase(Appointment appointment) {
 
         checkAppointmentTypeExistsOrThrowsException(appointment.getAppointmentType());
         checkAreaExistsOrThrowsException(appointment.getArea());
@@ -99,7 +99,7 @@ public class CreateAppointmentUseCase {
     }
 
     private void checkAssociationBetweenProfessionalAndAreaOrThrowsException(Professional professional, Area area) {
-        if (!this.professionalRepository.existsByIdAndAreas_Id(professional.getId(), area.getId())) {
+        if (!this.professionalRepository.existsAssociationWithArea(professional.getId(), area.getId())) {
             throw new BusinessException("O profissional não atua na área selecionada.");
         }
     }
@@ -142,6 +142,9 @@ public class CreateAppointmentUseCase {
                     && ts.getEndTime().toLocalTime().equals(appointment.getEndTime())).findFirst();
             if(timeSlot.isEmpty()){
                 throw new BusinessException("O profissional não trabalha no horário selecionado.");
+            }
+            if(!timeSlot.get().isAvailable()){
+                throw new BusinessException("O profissional não tem disponibilidade para o horário selecionado.");
             }
         }
 
