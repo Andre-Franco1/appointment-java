@@ -26,6 +26,12 @@ public class Client extends Person {
         this.dateOfBirth = dateOfBirth;
     }
 
+    public Client(Long id, String name, String phone, LocalDate dateOfBirth) {
+        super(id, name, phone);
+
+        this.dateOfBirth = dateOfBirth;
+    }
+
     public Client(Long id) {
         super(id);
     }
