@@ -11,7 +11,7 @@ public interface ProfessionalRepository extends JpaRepository<Professional, Long
 
     Page<Professional> findByNameContainingIgnoreCase(String name, Pageable pageable);
 
-    boolean existsByIdAndAreas_Id(Long professionalId, Integer areaId);
+    // boolean existsByIdAndAreas_Id(Long professionalId, Integer areaId);
 
     @Query("SELECT COUNT(p) > 0 " +
             "FROM Professional p JOIN p.areas a " +

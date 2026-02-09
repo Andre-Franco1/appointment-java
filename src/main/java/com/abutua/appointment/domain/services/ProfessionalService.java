@@ -160,22 +160,21 @@ public class ProfessionalService {
 
     private Set<Area> setAreasInProfessional(Set<IntegerDTO> areaDtos) {
 
-    if (areaDtos == null || areaDtos.isEmpty()) {
-        return new HashSet<>();
+        if (areaDtos == null || areaDtos.isEmpty()) {
+            return new HashSet<>();
+        }
+
+        Set<Integer> areaIds = areaDtos.stream()
+                .map(IntegerDTO::id)
+                .collect(Collectors.toSet());
+
+        Set<Area> areas = new HashSet<>(areaRepository.findAllById(areaIds));
+
+        if (areas.size() != areaIds.size()) {
+            throw new EntityNotFoundException("Uma ou mais áreas não existem");
+        }
+
+        return areas;
     }
-
-    Set<Integer> areaIds = areaDtos.stream()
-        .map(IntegerDTO::id)
-        .collect(Collectors.toSet());
-
-    Set<Area> areas = new HashSet<>(areaRepository.findAllById(areaIds));
-
-    if (areas.size() != areaIds.size()) {
-        throw new EntityNotFoundException("Uma ou mais áreas não existem");
-    }
-
-    return areas;
-}
-
 
 }
