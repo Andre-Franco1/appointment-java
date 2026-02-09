@@ -32,7 +32,7 @@ public class Professional extends Person {
     @OneToMany(mappedBy = "professional")
     private List<WorkScheduleItem> workScheduleItems = new ArrayList<>();
 
-    public Professional(){
+    public Professional() {
     }
 
     public Professional(Long id) {
@@ -41,6 +41,11 @@ public class Professional extends Person {
 
     public Professional(String name, String phone, boolean active) {
         super(name, phone);
+        this.active = active;
+    }
+
+    public Professional(Long id, String name, String phone, boolean active) {
+        super(id, name, phone);
         this.active = active;
     }
 
@@ -76,7 +81,7 @@ public class Professional extends Person {
 
     @Override
     public String toString() {
-        return "Professional [active=" + active + " " + super.toString() +  "]";
+        return "Professional [active=" + active + " " + super.toString() + "]";
     }
 
 }

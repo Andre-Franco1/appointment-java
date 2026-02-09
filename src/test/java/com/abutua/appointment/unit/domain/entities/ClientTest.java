@@ -29,7 +29,7 @@ public class ClientTest {
 
     //TODO add comments attribute
     @Test
-    void getDateOfBirthShouldSetAllAttributes() {
+    void constructorShouldSetAllAttributes() {
         String expName = "Test Client";
         LocalDate expDate = LocalDate.parse("2024-08-01");
         String expPhone = "1191912-2948";

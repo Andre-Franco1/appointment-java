@@ -98,7 +98,7 @@ public class CreateAppointmentUseCaseTest {
 
         Appointment appointment = new Appointment();
         appointment.setId(1l);
-        appointment.setDate(LocalDate.of(2028, 4, 8));
+        appointment.setDate(LocalDate.now().plusDays(1));
         appointment.setStartTime(LocalTime.parse("08:00:00"));
         appointment.setEndTime(LocalTime.parse("08:30:00"));
         appointment.setComments("No comments");
@@ -124,132 +124,6 @@ public class CreateAppointmentUseCaseTest {
     private List<TimeSlot> createTimeSlots(boolean available) {
         return List.of(TimeSlotFactory.createTimeSlot("08:00:00-03:00", "08:30:00-03:00", available));
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     @Test
     public void executeUseCaseShouldThrowsBusinessException_WrongStartAndEndTime() {
@@ -287,7 +161,7 @@ public class CreateAppointmentUseCaseTest {
 
         Appointment appointment = new Appointment();
         appointment.setId(1l);
-        appointment.setDate(LocalDate.of(2028, 4, 8));
+        appointment.setDate(LocalDate.now().plusDays(1));
         appointment.setStartTime(LocalTime.parse("08:15:00"));
         appointment.setEndTime(LocalTime.parse("08:30:00"));
         appointment.setComments("No comments");
@@ -302,110 +176,6 @@ public class CreateAppointmentUseCaseTest {
         verify(searchProfessionalAvailabilityTimesUseCase).executeUseCase(anyLong(), any());
         verify(appointmentRepository, never()).save(any());
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     @Test
     public void executeUseCaseShouldThrowsBusinessException_ProfessionalNotAvailable() {
@@ -443,7 +213,7 @@ public class CreateAppointmentUseCaseTest {
 
         Appointment appointment = new Appointment();
         appointment.setId(1l);
-        appointment.setDate(LocalDate.of(2028, 4, 8));
+        appointment.setDate(LocalDate.now().plusDays(1));
         appointment.setStartTime(LocalTime.parse("08:00:00"));
         appointment.setEndTime(LocalTime.parse("08:30:00"));
         appointment.setComments("No comments");
@@ -461,71 +231,3 @@ public class CreateAppointmentUseCaseTest {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Mocks dos objetos necessários
-        // AppointmentType appointmentType = mock(AppointmentType.class);
-        // lenient().when(appointmentTypeRepository.existsById(anyInt())).thenReturn(true);
-
-        // Area area = mock(Area.class);
-        // lenient().when(areaRepository.existsById(anyInt())).thenReturn(true);
-
-        // Professional professional = mock(Professional.class);
-        // lenient().when(professional.isActive()).thenReturn(true);
-        // lenient().when(professionalRepository.findById(anyLong())).thenReturn(of(professional));
-        // lenient().when(professionalRepository.existsAssociationWithArea(anyLong(), anyInt())).thenReturn(true);
-
-        // Client client = mock(Client.class);
-        // lenient().when(clientRepository.findById(anyLong())).thenReturn(of(client));
-
-        // lenient().when(appointmentRepository.existsOpenOrPresentAppointmentsForClient(
-        //         any(Client.class),
-        //         any(LocalDate.class),
-        //         any(LocalTime.class),
-        //         any(LocalTime.class))).thenReturn(false);
-
-        // given(appointmentRepository.existsOpenOrPresentAppointmentsForProfessional(
-        // any(Professional.class),
-        // any(LocalDate.class),
-        // any(LocalTime.class),
-        // any(LocalTime.class)
-        // )).willReturn(true);
-
-        // var timeSlots = createTimeSlots(true);
-        // given(searchProfessionalAvailabilityTimesUseCase.executeUseCase(anyLong(),
-        // any(LocalDate.class))).willReturn(timeSlots);
-
-        // Appointment appointment = new Appointment();
-        // appointment.setId(1l);
-        // appointment.setDate(LocalDate.of(2024, 4, 8));
-        // appointment.setStartTime(LocalTime.parse("08:00:00"));
-        // appointment.setEndTime(LocalTime.parse("08:30:00"));
-        // appointment.setComments("No comments");
-        // appointment.setAppointmentType(appointmentType);
-        // appointment.setArea(area);
-        // appointment.setProfessional(professional);
-        // appointment.setClient(client);
-
-        // assertThrows(BusinessException.class, () -> createAppointmentUseCase.executeUseCase(appointment));
-
-        // verify(searchProfessionalAvailabilityTimesUseCase).executeUseCase(anyLong(), any());
-        // verify(appointmentRepository, never()).save(any());

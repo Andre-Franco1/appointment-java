@@ -49,6 +49,7 @@ public class ClientService {
             client.setName(clientRequest.name());
             client.setPhone(clientRequest.phone());
             client.setDateOfBirth(clientRequest.dateOfBirth());
+            //TODO add comments attribute update
 
             clientRepository.save(client);
         } catch (EntityNotFoundException e ) {
